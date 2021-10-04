@@ -19,7 +19,7 @@ export class UserService {
 
   async findOneOrFail(id: string) {
     try {
-      return await this.prisma.user.findFirst({ where: { id } });
+      return await this.prisma.user.findFirst({ where: { id: +id } });
     } catch (error) {
       throw new NotFoundException(error.message);
     }
@@ -40,11 +40,11 @@ export class UserService {
     id: string;
     updateUserDto: UpdateUserDto;
   }) {
-    return this.prisma.user.update({ where: { id }, data: updateUserDto });
+    return this.prisma.user.update({ where: { id: +id }, data: updateUserDto });
   }
 
   public async remove(id: string) {
     await this.findOneOrFail(id);
-    return await this.prisma.user.delete({ where: { id } });
+    return await this.prisma.user.delete({ where: { id: +id } });
   }
 }

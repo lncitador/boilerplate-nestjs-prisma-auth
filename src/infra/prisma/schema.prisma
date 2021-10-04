@@ -3,15 +3,16 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id               String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id               Int            @id @default(autoincrement())
   fullName         String
   email            String
   password         String
-  createdAt        DateTime          @default(now()) @db.Timestamptz
-  updatedAt        DateTime          @default(now()) @updatedAt @db.Timestamptz
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @default(now()) @updatedAt
+  deletedAt        DateTime?
 }
