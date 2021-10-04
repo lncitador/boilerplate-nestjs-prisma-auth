@@ -1,0 +1,37 @@
+# Criar Usuário
+
+###
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+  "fullName": "john Doe",
+  "email": "test@mail.com",
+  "password": "123456"
+}
+
+###
+POST http://localhost:3000/auth/session
+Content-Type: application/json
+
+{
+  "email": "test@mail.com",
+  "password": "123456"
+}
+
+###
+GET http://localhost:3000/user
+
+###
+GET http://localhost:3000/user/f20ef4ab-cabf-44c9-aab7-ef1e7fe519dd
+
+###
+PATCH http://localhost:3000/user/f20ef4ab-cabf-44c9-aab7-ef1e7fe519dd
+Content-Type: application/json
+
+{
+  "password": "Doe John"
+}
+
+###
+DELETE http://localhost:3000/user/f20ef4ab-cabf-44c9-aab7-ef1e7fe519dd
